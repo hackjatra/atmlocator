@@ -1,22 +1,16 @@
 -- phpMyAdmin SQL Dump
--- version 3.2.4
+-- version 3.2.2.1deb1
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Dec 11, 2010 at 03:39 PM
--- Server version: 5.1.41
--- PHP Version: 5.3.1
+-- Generation Time: Dec 11, 2010 at 10:18 PM
+-- Server version: 5.1.49
+-- PHP Version: 5.2.10-2ubuntu6
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
-
 --
--- Database: `atmlocator`
+-- Database: `hackjatra_atmlocator`
 --
 
 -- --------------------------------------------------------
@@ -29,8 +23,8 @@ CREATE TABLE IF NOT EXISTS `atm` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `bank_id` int(11) DEFAULT NULL,
   `atm_network_id` int(11) DEFAULT NULL,
-  `latitude` float DEFAULT NULL,
-  `longitude` float DEFAULT NULL,
+  `latitude` decimal(18,12) DEFAULT NULL,
+  `longitude` decimal(18,12) DEFAULT NULL,
   `descriptive_location` varchar(140) DEFAULT NULL,
   `languages` varchar(255) DEFAULT NULL,
   `card_usage` enum('swipe','insert') DEFAULT NULL,
@@ -42,12 +36,7 @@ CREATE TABLE IF NOT EXISTS `atm` (
   PRIMARY KEY (`id`),
   KEY `fk_atm_properties_bank` (`bank_id`),
   KEY `fk_atm_properties_atm_network1` (`atm_network_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-
---
--- Dumping data for table `atm`
---
-
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -61,12 +50,7 @@ CREATE TABLE IF NOT EXISTS `atm_network` (
   `accepting_countries` text,
   PRIMARY KEY (`id`),
   UNIQUE KEY `name_UNIQUE` (`name`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-
---
--- Dumping data for table `atm_network`
---
-
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -82,12 +66,7 @@ CREATE TABLE IF NOT EXISTS `bank` (
   `one_time_withdraw_limit` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `identifier_UNIQUE` (`identifier`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-
---
--- Dumping data for table `bank`
---
-
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -105,12 +84,7 @@ CREATE TABLE IF NOT EXISTS `rating` (
   KEY `fk_rating_rating_attribute1` (`rating_attribute_id`),
   KEY `fk_rating_user1` (`user_id`),
   KEY `fk_rating_atm1` (`atm_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-
---
--- Dumping data for table `rating`
---
-
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -124,12 +98,7 @@ CREATE TABLE IF NOT EXISTS `rating_attribute` (
   `description` varchar(255) DEFAULT NULL,
   `ulimit` tinyint(4) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-
---
--- Dumping data for table `rating_attribute`
---
-
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -142,12 +111,7 @@ CREATE TABLE IF NOT EXISTS `role` (
   `role` varchar(45) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `role_UNIQUE` (`role`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-
---
--- Dumping data for table `role`
---
-
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -166,12 +130,21 @@ CREATE TABLE IF NOT EXISTS `user` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `email` (`email`),
   KEY `fk_user_roles1` (`role_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
 
 --
--- Dumping data for table `user`
+-- Table structure for table `variables`
 --
 
+CREATE TABLE IF NOT EXISTS `variables` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL,
+  `value` longtext NOT NULL,
+  `description` text NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Constraints for dumped tables
@@ -181,8 +154,8 @@ CREATE TABLE IF NOT EXISTS `user` (
 -- Constraints for table `atm`
 --
 ALTER TABLE `atm`
-  ADD CONSTRAINT `fk_atm_properties_bank` FOREIGN KEY (`bank_id`) REFERENCES `bank` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_atm_properties_atm_network1` FOREIGN KEY (`atm_network_id`) REFERENCES `atm_network` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_atm_properties_atm_network1` FOREIGN KEY (`atm_network_id`) REFERENCES `atm_network` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_atm_properties_bank` FOREIGN KEY (`bank_id`) REFERENCES `bank` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `rating`
