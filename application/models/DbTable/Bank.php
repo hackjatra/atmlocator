@@ -2,7 +2,7 @@
     /**
     * This is the DbTable class for the Bank table.
     */
-    class App_Model_DbTable_Bank extends Zend_Db_Table_Abstract
+    class App_Model_DbTable_Bank extends App_Model_DbTable_DbTableAbstract
     {
        /** Table name */
         protected $_name    = 'bank';
