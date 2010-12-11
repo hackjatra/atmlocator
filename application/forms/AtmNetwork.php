@@ -14,7 +14,7 @@
 		    ));
 		
 		$this->addElement('text','AcceptingCountries',array(
-		    'label'     => 'AcceptingCountries',
+		    'label'     => 'Accepting Countries',
 		    'required'    => true,
 		    ));
 		

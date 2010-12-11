@@ -8,7 +8,6 @@
             /* Form Elements & Other Definitions Here ... */
             $this->setMethod('post');
 
-		
 		$this->addElement('text','Token',array(
 		    'label'     => 'Token',
 		    'required'    => true,
@@ -25,12 +24,12 @@
 		    ));
 		
 		$this->addElement('text','RoleId',array(
-		    'label'     => 'RoleId',
+		    'label'     => 'Role',
 		    'required'    => true,
 		    ));
 		
 		$this->addElement('text','IsActive',array(
-		    'label'     => 'IsActive',
+		    'label'     => 'Active?',
 		    'required'    => true,
 		    ));
 		
@@ -51,5 +50,3 @@
             ));
         }
     }
-    
-        

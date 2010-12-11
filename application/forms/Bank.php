@@ -9,7 +9,7 @@
             $this->setMethod('post');
 		
 		$this->addElement('text','BankName',array(
-		    'label'     => 'BankName',
+		    'label'     => 'Bank Name',
 		    'required'    => true,
 		    ));
 		
@@ -19,12 +19,12 @@
 		    ));
 		
 		$this->addElement('text','DailyWithdrawLimit',array(
-		    'label'     => 'DailyWithdrawLimit',
+		    'label'     => 'Daily Withdrawl Limit',
 		    'required'    => true,
 		    ));
 		
 		$this->addElement('text','OneTimeWithdrawLimit',array(
-		    'label'     => 'OneTimeWithdrawLimit',
+		    'label'     => 'One Time Withdrawl Limit',
 		    'required'    => true,
 		    ));
 		
