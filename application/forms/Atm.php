@@ -3,13 +3,21 @@
     class App_Form_Atm extends Zend_Form
     {
     
-        public function init()
-        {
-            /* Form Elements & Other Definitions Here ... */
-            $this->setMethod('post');
+        public function init(){
+        /* Form Elements & Other Definitions Here ... */
+        $this->setMethod('post');
 		
-		$this->addElement('text','BankId',array(
+        $bankModel = new App_Model_Bank();
+		$bankMapper = new App_Model_BankMapper($bankModel);
+		$allBanks=$bankMapper->fetchAll();
+		$bankName=array();
+		foreach($allBanks as $bank){
+			array_push($bankName,$bank->bankName." (".$bank->identifier.")");
+		}
+		
+		$this->addElement('select','BankId',array(
 		    'label'     => 'Bank',
+			'multiOptions' => $bankName,
 		    'required'    => true,
 		    ));
 		
