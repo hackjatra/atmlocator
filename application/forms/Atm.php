@@ -9,19 +9,28 @@ class App_Form_Atm extends Zend_Form {
         $bankModel = new App_Model_Bank();
         $bankMapper = new App_Model_BankMapper($bankModel);
         $allBanks=$bankMapper->fetchAll();
-        $bankName=array();
+        $bankNames=array();
         foreach($allBanks as $bank) {
-            array_push($bankName,$bank->bankName." (".$bank->identifier.")");
+            $bankNames[$bank->id]=$bank->bankName." (".$bank->identifier.")";           
+        }
+
+        $atmNetworkModel= new App_Model_AtmNetwork();
+        $atmNetworkMapper = new App_Model_AtmNetworkMapper($atmNetworkModel);
+        $allAtmNetworks=$atmNetworkMapper->fetchAll();
+        $atmNetworkNames=array();
+        foreach($allAtmNetworks as $atmNetwork){
+            $atmNetworkNames[$atmNetwork->id]=$atmNetwork->name;
         }
 
         $this->addElement('select','BankId',array(
                 'label'     => 'Bank',
-                'multiOptions' => $bankName,
+                'multiOptions' => $bankNames,
                 'required'    => true,
         ));
 
-        $this->addElement('text','AtmNetworkId',array(
+        $this->addElement('select','AtmNetworkId',array(
                 'label'     => 'Atm Network',
+                'multiOptions' => $atmNetworkNames,
                 'required'    => true,
         ));
 
@@ -45,8 +54,9 @@ class App_Form_Atm extends Zend_Form {
                 'required'    => true,
         ));
 
-        $this->addElement('text','CardUsage',array(
+        $this->addElement('select','CardUsage',array(
                 'label'     => 'Card Usage',
+                'multiOptions' => array('swipe','insert'),
                 'required'    => true,
         ));
 
