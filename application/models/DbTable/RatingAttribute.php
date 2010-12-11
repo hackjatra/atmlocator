@@ -6,5 +6,7 @@
     {
        /** Table name */
         protected $_name    = 'rating_attribute';
+        protected $_dependentTables = array('App_Model_DbTable_Rating');
+        
     }
         
