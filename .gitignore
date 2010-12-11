@@ -6,3 +6,6 @@ src/system/application/config/database.php
 src/.htaccess
 application/configs/application.ini
 *.directory
+.settings
+.buildpath
+.project
