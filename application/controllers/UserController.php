@@ -4,14 +4,21 @@ class UserController extends Zend_Controller_Action
 {
     public function indexAction()
     {
-        $this->_helper->redirector('list');
+        $auth = Zend_Auth::getInstance();
+        var_dump($auth->getIdentity());
+        if ($auth->hasIdentity()) {
+            // Logged in
+        } else {
+            // Logged Out
+        }
+
+        
     }
 
     public function loginAction()
     {
         $provider = $this->getRequest()->getParam('provider');
         if ($provider) {
-            // disable layouts and view
             try {
                 require_once 'LightOpenID.php';
                 $openid = new LightOpenID();
@@ -28,16 +35,22 @@ class UserController extends Zend_Controller_Action
                 } elseif ($openid->mode == 'cancel') {
                     // Cancelled
                 } else {
-                    if ($openid->validate()) {
+//                    if ($openid->validate()) {
                         $this->loginSuccessful($openid);
-                    } else {
+//                    } else {
                         // Logged Out
-                    }
+//                    }
                 }
             } catch (Exception $e) {
                 print $e->getMessage();
             }
         }
+    }
+
+    public function logoutAction()
+    {
+        Zend_Auth::getInstance()->clearIdentity();
+        $this->_redirect('user/login');
     }
     
     public function addAction()
@@ -106,15 +119,37 @@ class UserController extends Zend_Controller_Action
         }
     }
 
+    /**
+     * Creates or retrieve user information and set the information in user session
+     * 
+     * @param LightOpenID $openId
+     */
     public function loginSuccessful(LightOpenID $openId)
     {
+        // namePerson/first, namePerson/last, contact/email
         $attributes = $openId->getAttributes();
         $email = $attributes['contact/email'];
 
-        $userMapper = new App_Model_UserMapper();
-        $user = $userMapper->findByEmail($email);
+        $userTbl = new App_Model_DbTable_User();
+        $user = $userTbl->findByEmail($email);
 
-//        var_dump($user->)
+        if (!$user) {
+            $userArray = array(
+                'username' => $attributes['namePerson/first'] . $attributes['namePerson/last'],
+                'email' => $attributes['contact/email'],
+                'is_active' => 1,
+                'role_id' => 3,
+            );
+
+            $userId = $userTbl->insert($userArray);
+            $user = $userTbl->find($userId);
+        }
+
+        if ($user) {
+            $auth = Zend_Auth::getInstance();
+            $authStorage = $auth->getStorage();
+            $authStorage->write($user);
+        }
     }
 }
 

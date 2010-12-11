@@ -11,7 +11,9 @@ class App_Model_DbTable_User extends Zend_Db_Table_Abstract
 
     public function findByEmail($email)
     {
-        return $this->fetchRow('email = ?', $email);
+        $select = $this->select();
+        $select->where('email = ?', $email);
+        return $this->fetchRow($select);
     }
 }
 
