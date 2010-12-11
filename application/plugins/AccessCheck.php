@@ -29,13 +29,13 @@ class App_Plugin_AccessCheck extends Zend_Controller_Plugin_Abstract
         $role = ($identity)?$identity->role_id:null;
         
         //get RoleName from role id
-        $roletbl=new App_Model_Roles();
-        $rolesmapper=new App_Model_RolesMapper($roletbl);
+        $roletbl=new App_Model_Role();
+        $rolesmapper=new App_Model_RoleMapper($roletbl);
         $row=$rolesmapper->find($role,$roletbl);
         $role=$roletbl->getRole();
 
         if (!$this->_acl->isAllowed($role, $resource, $action)) {
-            $request->setControllerName('users')
+            $request->setControllerName('user')
                     ->setActionName('login');
         }
     }
