@@ -1,0 +1,38 @@
+<p><a href="<?php echo $this->url(
+            array('controller'=>'variables', 
+            'action'=>'add'));?>">Add new Variables</a></p>
+<table>
+<tr>
+
+            <td>Id </td>
+            
+            <td>Name </td>
+            
+            <td>Value </td>
+            
+            <td>Description </td>
+            
+<td>&nbsp;</td>
+</tr>
+<?php foreach($this->entries as $entry) : ?>
+<tr>
+
+            <td><?php echo $this->escape($entry->Id)?></td>
+            
+            <td><?php echo $this->escape($entry->Name)?></td>
+            
+            <td><?php echo $this->escape($entry->Value)?></td>
+            
+            <td><?php echo $this->escape($entry->Description)?></td>
+                
+    <td>
+        <a href="<?php echo $this->url(array('controller'=>'variables', 
+            'action'=>'edit', 'id'=>$entry->Id));?>">Edit</a>
+            
+        <a href="<?php echo $this->url(array('controller'=>'variables', 
+            'action'=>'delete', 'id'=>$entry->Id));?>">Delete</a>
+    </td>
+</tr>
+<?php endforeach; ?>
+</table>
+        
