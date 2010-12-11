@@ -7,12 +7,6 @@
         {
             /* Form Elements & Other Definitions Here ... */
             $this->setMethod('post');
-            
-            
-		$this->addElement('text','Id',array(
-		    'label'     => 'Id',
-		    'required'    => true,
-		    ));
 		
 		$this->addElement('text','BankName',array(
 		    'label'     => 'BankName',

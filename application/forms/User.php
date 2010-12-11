@@ -24,6 +24,11 @@
 		    'required'    => true,
 		    ));
 		
+		$this->addElement('text','Email',array(
+		    'label'     => 'Email',
+		    'required'    => true,
+		    ));
+		
 		$this->addElement('text','RoleId',array(
 		    'label'     => 'RoleId',
 		    'required'    => true,

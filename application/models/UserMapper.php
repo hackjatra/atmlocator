@@ -26,6 +26,7 @@
                     'credibility'=>$tbl->getCredibility(),
             'is_active'=>$tbl->getIsActive(),
             'role_id'=>$tbl->getRoleId(),
+            'email'=>$tbl->getEmail(),
             'username'=>$tbl->getUsername(),
             'token'=>$tbl->getToken(),
             'id'=>$tbl->getId(),
@@ -53,6 +54,7 @@
             $tbl->setCredibility($row->credibility)
             ->setIsActive($row->is_active)
             ->setRoleId($row->role_id)
+            ->setEmail($row->email)
             ->setUsername($row->username)
             ->setToken($row->token)
             ->setId($row->id)
@@ -68,6 +70,7 @@
                 $entry->setCredibility($row->credibility)
             ->setIsActive($row->is_active)
             ->setRoleId($row->role_id)
+            ->setEmail($row->email)
             ->setUsername($row->username)
             ->setToken($row->token)
             ->setId($row->id)
