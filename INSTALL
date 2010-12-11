@@ -1,0 +1,2 @@
+Copy src/system/application/config/default.config.php and src/system/application/config/default.database.php to config.php and database.php
+Make necessary changes and we are good to go
