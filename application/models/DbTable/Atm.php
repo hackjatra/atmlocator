@@ -47,13 +47,17 @@ class App_Model_DbTable_Atm extends App_Model_DbTable_DbTableAbstract
         }
 
 
-        $sql = "SELECT bank_id, (:unit * ACOS( COS( RADIANS(:latitude) ) * COS( RADIANS( city_latitude ) ) * COS( RADIANS( city_longitude ) - RADIANS(:longitude) ) + SIN( RADIANS(:latitude) ) * SIN( RADIANS( city_latitude ) ) ) ) AS distance FROM cities HAVING distance < :distance ORDER BY distance";
-        $db = $this->getAdapter();
+        $sql = "SELECT bank_id, descriptive_location, ($unit * ACOS( COS( RADIANS($latitude) ) * COS( RADIANS( latitude ) ) *
+        COS( RADIANS( longitude ) - RADIANS($longitude) ) + SIN( RADIANS($latitude) ) * SIN( RADIANS( latitude ) ) ) )
+        AS distance FROM atm
+        HAVING distance < $distance ORDER BY distance";
 
-        $row = $db->query($select);
+        $db = $this->getAdapter();
+        $row = $db->query($sql);
 
         $result = $row->fetchAll();
 
+        return $result;
     }
 
     public function calculateDistance($lat_from, $long_from, $lat_to, $long_to, $unit='k')
