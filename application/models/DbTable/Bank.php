@@ -6,5 +6,6 @@
     {
        /** Table name */
         protected $_name    = 'bank';
+        protected $_dependentTables = array('App_Model_DbTable_Atm');
     }
         

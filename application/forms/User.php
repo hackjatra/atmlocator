@@ -7,6 +7,12 @@
         {
             /* Form Elements & Other Definitions Here ... */
             $this->setMethod('post');
+            
+            
+		$this->addElement('text','Id',array(
+		    'label'     => 'Id',
+		    'required'    => true,
+		    ));
 		
 		$this->addElement('text','Token',array(
 		    'label'     => 'Token',
@@ -15,6 +21,11 @@
 		
 		$this->addElement('text','Username',array(
 		    'label'     => 'Username',
+		    'required'    => true,
+		    ));
+		
+		$this->addElement('text','Email',array(
+		    'label'     => 'Email',
 		    'required'    => true,
 		    ));
 		

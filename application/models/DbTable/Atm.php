@@ -6,5 +6,18 @@
     {
        /** Table name */
         protected $_name    = 'atm';
+        
+        protected $_dependentTables = array('App_Model_DbTable_Rating');
+        
+        protected $_referenceMap = array (
+							'atm_network' => array (
+									'columns' => 'atm_network_id', 
+									'refTableClass' => 'App_Model_DbTable_AtmNetwork', 
+									'refColumns' => 'id' ),
+        					'bank' => array (
+									'columns' => 'bank_id', 
+									'refTableClass' => 'App_Model_DbTable_Bank', 
+									'refColumns' => 'id' ) 
+								);
     }
         

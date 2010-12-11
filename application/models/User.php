@@ -5,6 +5,7 @@
         protected $_id;
         protected $_token;
         protected $_username;
+        protected $_email;
         protected $_role_id;
         protected $_is_active;
         protected $_credibility;
@@ -72,6 +73,15 @@
                 return $this->_role_id;
             }
             
+            public function setEmail($data){
+                $this->_email=(string)$data;
+                return $this;
+            }
+            
+            public function getEmail(){
+                return $this->_email;
+            }
+            
             public function setUsername($data){
                 $this->_username=(string)$data;
                 return $this;
@@ -112,6 +122,7 @@
                'Id' =>$this->getId(),
             'Token' =>$this->getToken(),
             'Username' =>$this->getUsername(),
+            'Email' =>$this->getEmail(),
             'RoleId' =>$this->getRoleId(),
             'IsActive' =>$this->getIsActive(),
             'Credibility' =>$this->getCredibility(),
