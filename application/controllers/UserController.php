@@ -11,8 +11,6 @@ class UserController extends Zend_Controller_Action
         } else {
             // Logged Out
         }
-
-        
     }
 
     public function loginAction()
@@ -133,6 +131,8 @@ class UserController extends Zend_Controller_Action
         $userTbl = new App_Model_DbTable_User();
         $user = $userTbl->findByEmail($email);
 
+        // The user has successfully authenticated
+        // but it does not exist in our database, so create the record
         if (!$user) {
             $userArray = array(
                 'username' => $attributes['namePerson/first'] . $attributes['namePerson/last'],
