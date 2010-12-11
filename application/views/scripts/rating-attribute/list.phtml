@@ -1,0 +1,38 @@
+<p><a href="<?php echo $this->url(
+            array('controller'=>'rating-attribute', 
+            'action'=>'add'));?>">Add new RatingAttribute</a></p>
+<table>
+<tr>
+
+            <td>Id </td>
+            
+            <td>Name </td>
+            
+            <td>Description </td>
+            
+            <td>Ulimit </td>
+            
+<td>&nbsp;</td>
+</tr>
+<?php foreach($this->entries as $entry) : ?>
+<tr>
+
+            <td><?php echo $this->escape($entry->Id)?></td>
+            
+            <td><?php echo $this->escape($entry->Name)?></td>
+            
+            <td><?php echo $this->escape($entry->Description)?></td>
+            
+            <td><?php echo $this->escape($entry->Ulimit)?></td>
+                
+    <td>
+        <a href="<?php echo $this->url(array('controller'=>'rating-attribute', 
+            'action'=>'edit', 'id'=>$entry->Id));?>">Edit</a>
+            
+        <a href="<?php echo $this->url(array('controller'=>'rating-attribute', 
+            'action'=>'delete', 'id'=>$entry->Id));?>">Delete</a>
+    </td>
+</tr>
+<?php endforeach; ?>
+</table>
+        

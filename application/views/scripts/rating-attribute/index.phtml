@@ -1,0 +1,21 @@
+<p>
+    <a href ="<?php echo $this->url(
+                array(
+                    'controller'=>'rating-attribute', //replace _ with -
+                    'action'    =>'add'
+                    ),
+                    'default',
+                    true) ?>">Add RatingAttribute Name</a>
+    </p>
+    RatingAttribute Entries: <br />
+    <dl>
+        <?php foreach ($this->entries as $entry):?>
+        
+            <dt><?php echo $this->escape($entry->Id)?></dt>
+            <dt><?php echo $this->escape($entry->Name)?></dt>
+            <dt><?php echo $this->escape($entry->Description)?></dt>
+            <dt><?php echo $this->escape($entry->Ulimit)?></dt>
+       <br/>
+        <?php endforeach ?>
+    </dl>
+        

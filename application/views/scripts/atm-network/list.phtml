@@ -1,0 +1,34 @@
+<p><a href="<?php echo $this->url(
+            array('controller'=>'atm-network', 
+            'action'=>'add'));?>">Add new AtmNetwork</a></p>
+<table>
+<tr>
+
+            <td>Id </td>
+            
+            <td>Name </td>
+            
+            <td>AcceptingCountries </td>
+            
+<td>&nbsp;</td>
+</tr>
+<?php foreach($this->entries as $entry) : ?>
+<tr>
+
+            <td><?php echo $this->escape($entry->Id)?></td>
+            
+            <td><?php echo $this->escape($entry->Name)?></td>
+            
+            <td><?php echo $this->escape($entry->AcceptingCountries)?></td>
+                
+    <td>
+        <a href="<?php echo $this->url(array('controller'=>'atm-network', 
+            'action'=>'edit', 'id'=>$entry->Id));?>">Edit</a>
+            
+        <a href="<?php echo $this->url(array('controller'=>'atm-network', 
+            'action'=>'delete', 'id'=>$entry->Id));?>">Delete</a>
+    </td>
+</tr>
+<?php endforeach; ?>
+</table>
+        

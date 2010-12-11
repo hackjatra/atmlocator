@@ -1,0 +1,20 @@
+<p>
+    <a href ="<?php echo $this->url(
+                array(
+                    'controller'=>'atm-network', //replace _ with -
+                    'action'    =>'add'
+                    ),
+                    'default',
+                    true) ?>">Add AtmNetwork Name</a>
+    </p>
+    AtmNetwork Entries: <br />
+    <dl>
+        <?php foreach ($this->entries as $entry):?>
+        
+            <dt><?php echo $this->escape($entry->Id)?></dt>
+            <dt><?php echo $this->escape($entry->Name)?></dt>
+            <dt><?php echo $this->escape($entry->AcceptingCountries)?></dt>
+       <br/>
+        <?php endforeach ?>
+    </dl>
+        

@@ -1,0 +1,22 @@
+<p>
+    <a href ="<?php echo $this->url(
+                array(
+                    'controller'=>'rating', //replace _ with -
+                    'action'    =>'add'
+                    ),
+                    'default',
+                    true) ?>">Add Rating Name</a>
+    </p>
+    Rating Entries: <br />
+    <dl>
+        <?php foreach ($this->entries as $entry):?>
+        
+            <dt><?php echo $this->escape($entry->Id)?></dt>
+            <dt><?php echo $this->escape($entry->RatingAttributeId)?></dt>
+            <dt><?php echo $this->escape($entry->Score)?></dt>
+            <dt><?php echo $this->escape($entry->UserId)?></dt>
+            <dt><?php echo $this->escape($entry->AtmId)?></dt>
+       <br/>
+        <?php endforeach ?>
+    </dl>
+        

@@ -5,3 +5,4 @@ src/system/application/config/database.php
 *orig
 src/.htaccess
 application/configs/application.ini
+*.directory

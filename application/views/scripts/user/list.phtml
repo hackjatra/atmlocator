@@ -1,0 +1,46 @@
+<p><a href="<?php echo $this->url(
+            array('controller'=>'user', 
+            'action'=>'add'));?>">Add new User</a></p>
+<table>
+<tr>
+
+            <td>Id </td>
+            
+            <td>Token </td>
+            
+            <td>Username </td>
+            
+            <td>RoleId </td>
+            
+            <td>IsActive </td>
+            
+            <td>Credibility </td>
+            
+<td>&nbsp;</td>
+</tr>
+<?php foreach($this->entries as $entry) : ?>
+<tr>
+
+            <td><?php echo $this->escape($entry->Id)?></td>
+            
+            <td><?php echo $this->escape($entry->Token)?></td>
+            
+            <td><?php echo $this->escape($entry->Username)?></td>
+            
+            <td><?php echo $this->escape($entry->RoleId)?></td>
+            
+            <td><?php echo $this->escape($entry->IsActive)?></td>
+            
+            <td><?php echo $this->escape($entry->Credibility)?></td>
+                
+    <td>
+        <a href="<?php echo $this->url(array('controller'=>'user', 
+            'action'=>'edit', 'id'=>$entry->Id));?>">Edit</a>
+            
+        <a href="<?php echo $this->url(array('controller'=>'user', 
+            'action'=>'delete', 'id'=>$entry->Id));?>">Delete</a>
+    </td>
+</tr>
+<?php endforeach; ?>
+</table>
+        
