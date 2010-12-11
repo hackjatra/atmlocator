@@ -10,14 +10,14 @@
         $bankModel = new App_Model_Bank();
 		$bankMapper = new App_Model_BankMapper($bankModel);
 		$allBanks=$bankMapper->fetchAll();
-		$bankName=array();
+		$bankNames=array();
 		foreach($allBanks as $bank){
-			array_push($bankName,$bank->bankName." (".$bank->identifier.")");
+			$bankNames[$bank->id]=$bank->bankName." (".$bank->identifier.")";
 		}
 		
 		$this->addElement('select','BankId',array(
 		    'label'     => 'Bank',
-			'multiOptions' => $bankName,
+			'multiOptions' => $bankNames,
 		    'required'    => true,
 		    ));
 		
