@@ -2,16 +2,23 @@
     /**
     * This is the DbTable class for the Rating table.
     */
-    class App_Model_DbTable_Rating extends Zend_Db_Table_Abstract
+    class App_Model_DbTable_Rating extends App_Model_DbTable_DbTableAbstract
     {
        /** Table name */
         protected $_name    = 'rating';
-        protected $_dependentTables = array('App_Model_DbTable_Rating');
         
         protected $_referenceMap = array (
-							'atm_network' => array (
-									'columns' => 'atm_network_id', 
-									'refTableClass' => 'App_Model_DbTable_AtmNetwork', 
+							'user' => array (
+									'columns' => 'user_id', 
+									'refTableClass' => 'App_Model_DbTable_User', 
+									'refColumns' => 'id' ),
+        					'rating_attribute' => array (
+									'columns' => 'rating_attribute_id', 
+									'refTableClass' => 'App_Model_DbTable_RatingAttribute', 
+									'refColumns' => 'id' ),
+        					'atm' => array (
+									'columns' => 'atm_id', 
+									'refTableClass' => 'App_Model_DbTable_Atm', 
 									'refColumns' => 'id' ) 
 								);
     }
