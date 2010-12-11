@@ -1,0 +1,42 @@
+<p><a href="<?php echo $this->url(
+            array('controller'=>'bank', 
+            'action'=>'add'));?>">Add new Bank</a></p>
+<table>
+<tr>
+
+            <td>Id </td>
+            
+            <td>BankName </td>
+            
+            <td>Identifier </td>
+            
+            <td>DailyWithdrawLimit </td>
+            
+            <td>OneTimeWithdrawLimit </td>
+            
+<td>&nbsp;</td>
+</tr>
+<?php foreach($this->entries as $entry) : ?>
+<tr>
+
+            <td><?php echo $this->escape($entry->Id)?></td>
+            
+            <td><?php echo $this->escape($entry->BankName)?></td>
+            
+            <td><?php echo $this->escape($entry->Identifier)?></td>
+            
+            <td><?php echo $this->escape($entry->DailyWithdrawLimit)?></td>
+            
+            <td><?php echo $this->escape($entry->OneTimeWithdrawLimit)?></td>
+                
+    <td>
+        <a href="<?php echo $this->url(array('controller'=>'bank', 
+            'action'=>'edit', 'id'=>$entry->Id));?>">Edit</a>
+            
+        <a href="<?php echo $this->url(array('controller'=>'bank', 
+            'action'=>'delete', 'id'=>$entry->Id));?>">Delete</a>
+    </td>
+</tr>
+<?php endforeach; ?>
+</table>
+        

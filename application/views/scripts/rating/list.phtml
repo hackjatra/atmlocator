@@ -1,0 +1,42 @@
+<p><a href="<?php echo $this->url(
+            array('controller'=>'rating', 
+            'action'=>'add'));?>">Add new Rating</a></p>
+<table>
+<tr>
+
+            <td>Id </td>
+            
+            <td>RatingAttributeId </td>
+            
+            <td>Score </td>
+            
+            <td>UserId </td>
+            
+            <td>AtmId </td>
+            
+<td>&nbsp;</td>
+</tr>
+<?php foreach($this->entries as $entry) : ?>
+<tr>
+
+            <td><?php echo $this->escape($entry->Id)?></td>
+            
+            <td><?php echo $this->escape($entry->RatingAttributeId)?></td>
+            
+            <td><?php echo $this->escape($entry->Score)?></td>
+            
+            <td><?php echo $this->escape($entry->UserId)?></td>
+            
+            <td><?php echo $this->escape($entry->AtmId)?></td>
+                
+    <td>
+        <a href="<?php echo $this->url(array('controller'=>'rating', 
+            'action'=>'edit', 'id'=>$entry->Id));?>">Edit</a>
+            
+        <a href="<?php echo $this->url(array('controller'=>'rating', 
+            'action'=>'delete', 'id'=>$entry->Id));?>">Delete</a>
+    </td>
+</tr>
+<?php endforeach; ?>
+</table>
+        

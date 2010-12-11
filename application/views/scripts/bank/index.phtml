@@ -1,0 +1,22 @@
+<p>
+    <a href ="<?php echo $this->url(
+                array(
+                    'controller'=>'bank', //replace _ with -
+                    'action'    =>'add'
+                    ),
+                    'default',
+                    true) ?>">Add Bank Name</a>
+    </p>
+    Bank Entries: <br />
+    <dl>
+        <?php foreach ($this->entries as $entry):?>
+        
+            <dt><?php echo $this->escape($entry->Id)?></dt>
+            <dt><?php echo $this->escape($entry->BankName)?></dt>
+            <dt><?php echo $this->escape($entry->Identifier)?></dt>
+            <dt><?php echo $this->escape($entry->DailyWithdrawLimit)?></dt>
+            <dt><?php echo $this->escape($entry->OneTimeWithdrawLimit)?></dt>
+       <br/>
+        <?php endforeach ?>
+    </dl>
+        

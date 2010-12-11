@@ -1,0 +1,30 @@
+<p>
+    <a href ="<?php echo $this->url(
+                array(
+                    'controller'=>'atm', //replace _ with -
+                    'action'    =>'add'
+                    ),
+                    'default',
+                    true) ?>">Add Atm Name</a>
+    </p>
+    Atm Entries: <br />
+    <dl>
+        <?php foreach ($this->entries as $entry):?>
+        
+            <dt><?php echo $this->escape($entry->Id)?></dt>
+            <dt><?php echo $this->escape($entry->BankId)?></dt>
+            <dt><?php echo $this->escape($entry->AtmNetworkId)?></dt>
+            <dt><?php echo $this->escape($entry->Latitude)?></dt>
+            <dt><?php echo $this->escape($entry->Longitude)?></dt>
+            <dt><?php echo $this->escape($entry->DescriptiveLocation)?></dt>
+            <dt><?php echo $this->escape($entry->Languages)?></dt>
+            <dt><?php echo $this->escape($entry->CardUsage)?></dt>
+            <dt><?php echo $this->escape($entry->Charges)?></dt>
+            <dt><?php echo $this->escape($entry->OneTimeWithdrawLimit)?></dt>
+            <dt><?php echo $this->escape($entry->AdditionalProperty)?></dt>
+            <dt><?php echo $this->escape($entry->Description)?></dt>
+            <dt><?php echo $this->escape($entry->VerificationDescription)?></dt>
+       <br/>
+        <?php endforeach ?>
+    </dl>
+        

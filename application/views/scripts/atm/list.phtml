@@ -1,0 +1,74 @@
+<p><a href="<?php echo $this->url(
+            array('controller'=>'atm', 
+            'action'=>'add'));?>">Add new Atm</a></p>
+<table>
+<tr>
+
+            <td>Id </td>
+            
+            <td>BankId </td>
+            
+            <td>AtmNetworkId </td>
+            
+            <td>Latitude </td>
+            
+            <td>Longitude </td>
+            
+            <td>DescriptiveLocation </td>
+            
+            <td>Languages </td>
+            
+            <td>CardUsage </td>
+            
+            <td>Charges </td>
+            
+            <td>OneTimeWithdrawLimit </td>
+            
+            <td>AdditionalProperty </td>
+            
+            <td>Description </td>
+            
+            <td>VerificationDescription </td>
+            
+<td>&nbsp;</td>
+</tr>
+<?php foreach($this->entries as $entry) : ?>
+<tr>
+
+            <td><?php echo $this->escape($entry->Id)?></td>
+            
+            <td><?php echo $this->escape($entry->BankId)?></td>
+            
+            <td><?php echo $this->escape($entry->AtmNetworkId)?></td>
+            
+            <td><?php echo $this->escape($entry->Latitude)?></td>
+            
+            <td><?php echo $this->escape($entry->Longitude)?></td>
+            
+            <td><?php echo $this->escape($entry->DescriptiveLocation)?></td>
+            
+            <td><?php echo $this->escape($entry->Languages)?></td>
+            
+            <td><?php echo $this->escape($entry->CardUsage)?></td>
+            
+            <td><?php echo $this->escape($entry->Charges)?></td>
+            
+            <td><?php echo $this->escape($entry->OneTimeWithdrawLimit)?></td>
+            
+            <td><?php echo $this->escape($entry->AdditionalProperty)?></td>
+            
+            <td><?php echo $this->escape($entry->Description)?></td>
+            
+            <td><?php echo $this->escape($entry->VerificationDescription)?></td>
+                
+    <td>
+        <a href="<?php echo $this->url(array('controller'=>'atm', 
+            'action'=>'edit', 'id'=>$entry->Id));?>">Edit</a>
+            
+        <a href="<?php echo $this->url(array('controller'=>'atm', 
+            'action'=>'delete', 'id'=>$entry->Id));?>">Delete</a>
+    </td>
+</tr>
+<?php endforeach; ?>
+</table>
+        
