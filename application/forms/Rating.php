@@ -9,7 +9,7 @@
             $this->setMethod('post');
 		
 		$this->addElement('text','RatingAttributeId',array(
-		    'label'     => 'RatingAttributeId',
+		    'label'     => 'Attribute',
 		    'required'    => true,
 		    ));
 		
@@ -19,12 +19,12 @@
 		    ));
 		
 		$this->addElement('text','UserId',array(
-		    'label'     => 'UserId',
+		    'label'     => 'User',
 		    'required'    => true,
 		    ));
 		
 		$this->addElement('text','AtmId',array(
-		    'label'     => 'AtmId',
+		    'label'     => 'Atm',
 		    'required'    => true,
 		    ));
 		
@@ -40,5 +40,3 @@
             ));
         }
     }
-    
-        
