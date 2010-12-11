@@ -9,12 +9,12 @@
             $this->setMethod('post');
 		
 		$this->addElement('text','BankId',array(
-		    'label'     => 'BankId',
+		    'label'     => 'Bank',
 		    'required'    => true,
 		    ));
 		
 		$this->addElement('text','AtmNetworkId',array(
-		    'label'     => 'AtmNetworkId',
+		    'label'     => 'Atm Network',
 		    'required'    => true,
 		    ));
 		
@@ -29,7 +29,7 @@
 		    ));
 		
 		$this->addElement('text','DescriptiveLocation',array(
-		    'label'     => 'DescriptiveLocation',
+		    'label'     => 'Descriptive Location',
 		    'required'    => true,
 		    ));
 		
@@ -39,33 +39,28 @@
 		    ));
 		
 		$this->addElement('text','CardUsage',array(
-		    'label'     => 'CardUsage',
+		    'label'     => 'Card Usage',
 		    'required'    => true,
 		    ));
 		
 		$this->addElement('text','Charges',array(
 		    'label'     => 'Charges',
-		    'required'    => true,
 		    ));
 		
 		$this->addElement('text','OneTimeWithdrawLimit',array(
-		    'label'     => 'OneTimeWithdrawLimit',
-		    'required'    => true,
+		    'label'     => 'One Time Withdrawl Limit',
 		    ));
 		
 		$this->addElement('text','AdditionalProperty',array(
-		    'label'     => 'AdditionalProperty',
-		    'required'    => true,
+		    'label'     => 'Additional Property',
 		    ));
 		
 		$this->addElement('text','Description',array(
 		    'label'     => 'Description',
-		    'required'    => true,
 		    ));
 		
 		$this->addElement('text','VerificationDescription',array(
-		    'label'     => 'VerificationDescription',
-		    'required'    => true,
+		    'label'     => 'Verification Description',
 		    ));
 		
             // Add the submit button
@@ -81,4 +76,3 @@
         }
     }
     
-        
