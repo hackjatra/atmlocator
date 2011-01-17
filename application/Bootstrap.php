@@ -5,18 +5,25 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 	protected $_acl = null;
     protected $_auth = null;
     
+    /**
+     * Automatically load the modules
+     * 
+     * Configures classes with 'App_' to autoload
+     */
     protected function _initModuleAutoLoad()
     {
     	  $moduleLoader = new Zend_Application_Module_Autoloader(array(
     	      "namespace" => "App",
     	      "basePath" => APPLICATION_PATH));
-    	  
+    }
+    
+    protected function _initAuthAndAcl()
+    {	  
     	  $this->_acl = new App_Model_Acl();
     	  $this->_auth = Zend_Auth::getInstance();
     	  
     	  $frontController = Zend_Controller_Front::getInstance();
-    	  //$frontController->registerPlugin(new App_Plugin_AccessCheck($this->_acl, $this->_auth));
-    	  return $moduleLoader;
+    	  $frontController->registerPlugin(new App_Plugin_AccessCheck($this->_acl, $this->_auth));
     }
     
     protected function _initViewHelper()

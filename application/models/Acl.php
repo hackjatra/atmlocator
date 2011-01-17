@@ -1,6 +1,8 @@
 <?php
-class App_Model_Acl extends Zend_Acl{
-    public function __construct(){
+class App_Model_Acl extends Zend_Acl
+{
+    public function __construct()
+    {
     	//add resources here
 
     	$this->add(new Zend_Acl_Resource('error'));
@@ -15,6 +17,9 @@ class App_Model_Acl extends Zend_Acl{
     	
     	//add role here
     	$this->addRole(new Zend_Acl_Role('user'));
-        $this->addRole(new Zend_Acl_Role('admin'),'user');        
+        $this->addRole(new Zend_Acl_Role('admin'),'user');
+        
+        $this->allow('admin', 'atm');
+		
     }
 }
