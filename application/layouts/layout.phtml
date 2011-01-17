@@ -8,6 +8,9 @@
     $this->headLink()->appendStylesheet($this->baseUrl() . '/css/style.css');
     $this->headLink()->appendStylesheet($this->baseUrl() . '/css/960.css');
     print $this->headLink();
+    
+    $this->jQuery()->setLocalPath($this->baseUrl() .'/js/jquery.js');
+    echo $this->jQuery();
 	/*
 	$this->headScript()->prependFile($this->baseUrl() . '/js/jquery-1.3.2.min.js', $type = 'text/javascript');
     print $this->headScript();
