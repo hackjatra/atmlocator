@@ -1,0 +1,16 @@
+Story1
+======
+
+Summary
+-------
+
+A user who already exists in the system, should be able to login to the system and create new atms. He should also be 
+able to manage, edit his own created atms.
+
+Explanation
+-----------
+
+1. Database already contains known users (moderators). 
+This decision is to allow us to ignore the user registration part, and focus more on content addition portion. We can 
+look into user addition / roles etc in later part of our application.
+2. Most of the layout decisions have been borrowed from StackOverflow.com. Check out the attached images.
